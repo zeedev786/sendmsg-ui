@@ -1,0 +1,42 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+        <a class="navbar-brand" href="#">Kisan Network</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <a class="nav-link" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated">
+                    <a class="nav-link" routerLink="/create">create contact</a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated && profileisSet">
+                    <a class="nav-link" [routerLink]="['/profile',username]">Profile</a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated && !profileisSet ">
+                    <a class="nav-link" [routerLink]="['/profile']">Create Profile</a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated">
+                    <a class="nav-link" routerLink="/myposts">my contacts</a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active" *ngIf="!userIsAuthenticated">
+                    <a class="nav-link" routerLink="/login">Auth</a>
+                </li>
+
+                <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated">
+                    <a class="nav-link" (click)="onLogout()">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+</div>
